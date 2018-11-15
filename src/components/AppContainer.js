@@ -1,5 +1,4 @@
 import React from 'react'
-//import state$ from '../store'
 import { buildApp } from '../utils/rendering'
 
 class AppContainer extends React.Component {
