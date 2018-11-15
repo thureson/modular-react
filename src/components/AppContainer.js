@@ -1,5 +1,5 @@
-import React from 'react';
-import state$ from '../store'
+import React from 'react'
+//import state$ from '../store'
 import { buildApp } from '../utils/rendering'
 
 class AppContainer extends React.Component {
@@ -9,7 +9,7 @@ class AppContainer extends React.Component {
   }
   
   componentDidMount() {
-    state$.subscribe(newState => this.setState(newState))
+    this.props.state$.subscribe(newState => this.setState(newState))
   }
 
   render() {

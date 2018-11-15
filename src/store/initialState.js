@@ -3,7 +3,7 @@ import App from '../components/app/App'
 export default {
   app: {
     element: App,
-    props: [['data', 'people', 1, 'name']],
+    props: [['data', 'people']],
     children: []
   },
   data: {

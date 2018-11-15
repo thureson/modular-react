@@ -17,7 +17,7 @@ import {
 
 export const element = curry(React.createElement)
 
-// TODO: Make all pointfree
+// TODO: Make all pointfree, refactor to a single compose
 const findByPath = state => compose(
   flip(view)(state),
   lensPath

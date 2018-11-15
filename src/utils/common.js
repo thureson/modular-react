@@ -1,3 +1,3 @@
-import { tap, curry } from 'ramda'
+import { tap } from 'ramda'
 
 export const log = stuff => tap(console.log(stuff))
