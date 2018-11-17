@@ -1,12 +1,59 @@
-## Top-Down-React
+## modular-react
 
-Rendered components are controlled with state. This enables changing the hierarcy of rendered components dynamically. Also props that components receive are controlled by state.
+### Example usage
+```
+import {
+  createStore,
+  dispatch,
+  AppContainer,
+  actionIs,
+  alter,
+  replace
+} from 'modular-react'
+
+const setName = name => dispatch({
+  type: 'SET_NAME',
+  name
+})
+
+const App = ({ name, children }) =>
+  <div>
+    <p onClick={() => setName('Lily')}> 
+      {name}
+    </p>
+    { children }
+  </div>
+
+const initialState = {
+  app: {
+    element: App,
+    props: [['people', 1]],
+    children: []
+  },
+  data: {
+    people: [
+      'John',
+      'Mary'
+    ]
+  }
+}
+
+const actionsToStates = [
+  [
+    actionIs('SET_NAME'),
+    replace(['people', 1])
+  ]
+]
+
+const state$ = createStore(initialState, actionsToStates)
+
+<AppContainer state$={state$} />
+// -> Build the app according to state. 
+```
 
 ### Info
 
-#### Rendering
-Setup the initial rendering of components by editing .app in  `src/store/initialState.js`
-
+#### initialState
 Components are setup by following example:
 ```
 {
@@ -27,13 +74,9 @@ Components are setup by following example:
 }
 ```
 
-#### Actions
-ActionCreators are recommended to be placed `src/store/actionCreators`
-
-Mapping of actions to states should be placed in `src/store/actionsToStates/modules` under some module. When creating modules remember to add the new module in `src/store/actionsToStates/modules/index.js`
+#### actionsToState
 
 ### Setup
 ```
-yarn install
-yarn start
+yarn add modular-react
 ```
